@@ -74,10 +74,7 @@ class Command(django.core.management.base.BaseCommand):
                 if not compiler:
                     continue
 
-                try:
-                    compiler.handle_changed_file(path, verbosity=verbosity)
-                except (exceptions.StaticCompilationError, ValueError) as e:
-                    print(e)
+                compiler.handle_changed_file(path, verbosity=verbosity)
 
         if options["watch"]:
             from static_precompiler.watch import watch_dirs
